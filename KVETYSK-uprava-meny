@@ -20,9 +20,9 @@
 
 [Kontrola_pred_zauctovanim]
 {
-  if(vhl.mena != "EUR" && vhl.kurz == 1)
+  if(vhl.mena != "EUR" && vhl.kurz == 1 || vhl.mena != "EUR" && vhl.kurz == 0)
   {
-    MessageBox("Nemôžete mať nastavenú inú menu a kurz 1! Prosím pred pokračovaním opravte kurz");
+    MessageBox("Nemôžete mať nastavenú inú menu a kurz 1 alebo 0 ! Prosím pred pokračovaním opravte kurz");
   }
   else
   {
