@@ -1,0 +1,42 @@
+//pred
+
+[Kontrola_pred_zauctovanim]
+{
+    if(vhl.uctovat) // oductovanie
+    {
+      vhl.uctovat = 0;
+    }
+    else if(DialogBox("LOCAL:Plugins/Kontrola_pred_zauctovanim", ANYREC)) // kontrola podmienok zauctovania
+    {
+      vhl.uctovat = 1;
+    }
+    else // ak je kontrola zauctovania neuspesna
+      vhl.uctovat = 0;
+
+  Run(vtypdokl.scroll[2]+".dlx","Write doklad");
+}
+
+// po
+
+[Kontrola_pred_zauctovanim]
+{
+  if(vhl.mena != "EUR" && vhl.kurz == 1)
+  {
+    MessageBox("Nemôžete mať nastavenú inú menu a kurz 1! Prosím pred pokračovaním opravte kurz");
+  }
+  else
+  {
+    if(vhl.uctovat) // oductovanie
+    {
+      vhl.uctovat = 0;
+    }
+    else if(DialogBox("LOCAL:Plugins/Kontrola_pred_zauctovanim", ANYREC)) // kontrola podmienok zauctovania
+    {
+      vhl.uctovat = 1;
+    }
+    else // ak je kontrola zauctovania neuspesna
+      vhl.uctovat = 0;
+
+  Run(vtypdokl.scroll[2]+".dlx","Write doklad");
+  }
+}
